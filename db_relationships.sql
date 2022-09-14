@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `car`
+--
+
+DROP TABLE IF EXISTS `car`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `car` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `citizen_id` int(10) unsigned NOT NULL,
+  `release_year` varchar(4) COLLATE utf8mb4_bin DEFAULT NULL,
+  `model` varchar(30) COLLATE utf8mb4_bin DEFAULT NULL,
+  `make` varchar(20) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `car_FK` (`citizen_id`),
+  CONSTRAINT `car_FK` FOREIGN KEY (`citizen_id`) REFERENCES `citizen` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `car`
+--
+
+LOCK TABLES `car` WRITE;
+/*!40000 ALTER TABLE `car` DISABLE KEYS */;
+INSERT INTO `car` VALUES (1,1,'2022','RS5','Audi'),(2,1,'2022','QS5','Audi'),(3,2,'2022','X6','BMW'),(4,1,'2022','A200','Mercedez');
+/*!40000 ALTER TABLE `car` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `citizen`
 --
 
@@ -66,7 +95,7 @@ CREATE TABLE `tax_account` (
 
 LOCK TABLES `tax_account` WRITE;
 /*!40000 ALTER TABLE `tax_account` DISABLE KEYS */;
-INSERT INTO `tax_account` VALUES (1,NULL,'2022-09-13',865);
+INSERT INTO `tax_account` VALUES (1,1,'2022-09-13',865);
 /*!40000 ALTER TABLE `tax_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-13 19:01:02
+-- Dump completed on 2022-09-13 19:44:53
